@@ -1,28 +1,36 @@
-//Check if the email address is valid or not 
-
 <!DOCTYPE html>
 <html>
+<head>
+    <title>String Concatenation</title>
+</head>
 <body>
 
+<h2>String Concatenation</h2>
+
 <form method="post">
-    Email:
-    <input type="text" name="email">
-    <input type="submit" value="Check">
+    <label>Enter Short String:</label>
+    <input type="text" name="short_string" required>
+    <br><br>
+
+    <label>Enter Long String:</label>
+    <input type="text" name="long_string" required>
+    <br><br>
+
+    <input type="submit" name="submit" value="Create String">
 </form>
 
 <?php
+if (isset($_POST['submit'])) {
 
+    $shortString = $_POST['short_string'];
+    $longString = $_POST['long_string'];
 
+    // Create: Long String + Short String + Long String
+    $newString = $longString . " " . $shortString . " " . $longString;
 
-    $email = $_POST["email"];
-
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Valid email address";
-    } else {
-        echo "Invalid email address";
-    }
-
-
+    echo "<h3>Result:</h3>";
+    echo "<p><strong>$newString</strong></p>";
+}
 ?>
 
 </body>

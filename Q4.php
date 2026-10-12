@@ -1,19 +1,33 @@
-//Simple PHP Browser Detection
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uppercase Last Three Characters</title>
+</head>
+<body>
+
+<form method="post">
+    Enter a string:
+    <input type="text" name="text" required><br><br>
+
+    <input type="submit" value="Convert">
+</form>
 
 <?php
+ {
 
-$browser = $_SERVER['HTTP_USER_AGENT'];
+    $str = $_POST["text"];
+    $length = strlen($str);
 
-if (strpos($browser, 'Chrome') !== false) {
-    echo "You are using Google Chrome";
-} elseif (strpos($browser, 'Firefox') !== false) {
-    echo "You are using Mozilla Firefox";
-} elseif (strpos($browser, 'Safari') !== false) {
-    echo "You are using Safari";
-} elseif (strpos($browser, 'Edge') !== false) {
-    echo "You are using Microsoft Edge";
-} else {
-    echo "Browser not detected";
+    if ($length <= 3) {
+        $result = strtoupper($str);
+    } else {
+        $result = substr($str, 0, $length - 3) .
+                  strtoupper(substr($str, -3));
+    }
+
+    echo "<h3>Result: $result</h3>";
 }
-
 ?>
+
+</body>
+</html>
